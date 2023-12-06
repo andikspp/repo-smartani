@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Chat Interface</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .chat-container {
+        max-width: 400px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .chat-header {
+        background-color: #007bff;
+        color: white;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .chat-messages {
+        padding: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .user-message,
+      .ai-message {
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 10px;
+      }
+
+      .user-message {
+        text-align: right;
+      }
+
+      .ai-message {
+        text-align: left;
+      }
+
+      .chat-input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-top: 1px solid #ccc;
+      }
+
+      #send-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">AI Chat</div>
+      <div class="chat-messages" id="chat-messages">
+        <div class="ai-message">AI: Hello! How can I assist you today?</div>
+      </div>
+      <input
+        type="text"
+        class="chat-input"
+        id="user-input"
+        placeholder="Type your message..."
+      />
+      <button id="send-button">Send</button>
+    </div>
+
+    <script>
+      const userMessageInput = document.getElementById("user-input");
+      const chatMessagesDiv = document.getElementById("chat-messages");
+      const sendButton = document.getElementById("send-button");
+      sendButton.addEventListener("click", sendMessage);
+
+      function sendMessage() {
+        const userMessage = userMessageInput.value;
+        appendUserMessage(userMessage);
+
+        fetch("/ask-ai", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: userMessage }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const aiResponse = data.aiResponse;
+            appendAiMessage(aiResponse);
+          })
+          .catch((error) => {
+            console.error(
+              "Terjadi kesalahan dalam permintaan ke server: " + error
+            );
+          });
+
+        // Clear user input
+        userMessageInput.value = "";
+      }
+
+      function appendUserMessage(message) {
+        const userMessageDiv = document.createElement("div");
+        userMessageDiv.classList.add("user-message");
+        userMessageDiv.innerHTML = `You: ${message}`;
+        chatMessagesDiv.appendChild(userMessageDiv);
+      }
+
+      function appendAiMessage(message) {
+        const aiMessageDiv = document.createElement("div");
+        aiMessageDiv.classList.add("ai-message");
+        aiMessageDiv.innerHTML = `AI: ${message}`;
+        chatMessagesDiv.appendChild(aiMessageDiv);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<?php
+// Setelah pengguna mendaftar
+$token = md5(uniqid(rand(), true));
+
+// Simpan token dan status verifikasi di database
+mysqli_query($konek, "INSERT INTO users (username, email, password, verification_token, email_verified)
+                      VALUES ('$username', '$email', '$password', '$token', 0)");
+
+// Kirim email verifikasi
+$to = $email;
+$subject = 'Verifikasi Email';
+$message = 'Klik tautan ini untuk verifikasi email: http://example.com/verify.php?token=' . $token;
+$headers = 'From: webmaster@example.com';
+
+mail($to, $subject, $message, $headers);
+?>

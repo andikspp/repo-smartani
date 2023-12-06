@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda</title>
+    <style>
+      /* Reset CSS */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Styling Header */
+      header {
+        background-color: #004a15;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      header img {
+        width: 50px;
+        height: auto;
+        padding: 10px;
+        margin-right: auto;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
+
+      header nav ul {
+        list-style: none;
+      }
+
+      header nav ul li {
+        display: inline;
+        margin-right: 10px;
+      }
+
+      header nav ul li a {
+        text-decoration: none;
+        color: #fff;
+        transition: background-color 0.3s, font-size 0.3s; /* Efek transisi saat hover */
+        padding: 5px 10px; /* Padding yang diperbesar saat dihover */
+        border-radius: 5px; /* Tambahkan sedikit radius sudut pada latar belakang */
+      }
+
+      header nav ul li a:hover {
+        background-color: #00390e; /* Warna latar belakang saat hover */
+        color: white; /* Warna teks saat hover */
+        font-size: 26px; /* Ukuran font yang diperbesar saat hover */
+        transition: background-color 0.3s, font-size 0.3s; /* Efek transisi saat hover */
+      }
+
+      /* Styling Content Section */
+      .content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .slider-container {
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slider {
+        width: 100%;
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        flex: 1;
+        padding: 20px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      /* Tombol panah untuk navigasi slider */
+      .slider-nav {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .slider-nav button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+
+      .slider-nav button:hover {
+        background-color: #0056b3; /* Warna latar belakang saat dihover */
+      }
+
+      .tentang p {
+        font-size: 12px;
+      }
+
+      .tentang img {
+        margin-top: 20px;
+        width: 100px;
+        height: auto;
+      }
+
+      /* Media Queries untuk Responsif */
+      @media (max-width: 768px) {
+        header {
+          padding: 5px;
+        }
+
+        header h1 {
+          font-size: 20px;
+        }
+
+        header nav ul {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        header nav ul li {
+          display: block;
+          margin: 5px 0;
+        }
+
+        .content {
+          padding: 10px;
+        }
+      }
+
+      /* Gaya footer responsif */
+      .footer {
+        background-color: #004a15;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .Footer-Logo img {
+        width: 50px;
+        height: auto;
+        padding: 10px;
+      }
+
+      .footer-links {
+        text-align: center;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      .footer-links a:hover {
+        text-decoration: underline;
+      }
+
+      /* Media query untuk responsif footer */
+      @media (max-width: 768px) {
+        .footer-content {
+          flex-direction: column;
+          align-items: center; /* Pusatkan konten footer saat di zoom out */
+        }
+
+        .Footer-Logo img {
+          margin: 0; /* Hapus padding */
+        }
+
+        .footer-links {
+          margin-top: 10px; /* Berikan jarak antara tautan */
+          text-align: center; /* Pusatkan tautan saat di zoom out */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="Logo transparan.png" alt="Logo SmarTani" />
+      <nav>
+        <ul>
+          <li><a href="login.php">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="content">
+      <div class="slider-container">
+        <div class="slider">
+          <div class="slide">
+            <h2>Tentang SmarTani</h2>
+            <div class="tentang">
+              <img src="Logo transparan.png" alt="Logo SmarTani" />
+              <p>
+                SmarTani adalah sebuah solusi inovatif untuk mendukung para
+                petani dan pelaku pertanian dalam mengoptimalkan hasil panen
+                mereka. Dengan menggabungkan kecerdasan buatan, informasi cuaca
+                real-time, serta database yang kaya akan informasi pertanian dan
+                pasar lokal, aplikasi ini memberikan rekomendasi tentang tanaman
+                yang cocok untuk ditanam berdasarkan lokasi dan kondisi cuaca
+                saat itu. Selain itu, aplikasi ini memungkinkan pengguna untuk
+                mencari pasar dan pusat distribusi terdekat, melihat harga
+                barang hasil pertanian di pasar terdekat, dan mengelola jadwal
+                kegiatan pertanian mereka. Dengan fitur-fitur yang informatif
+                dan mudah dipahami, kami bertujuan untuk meningkatkan
+                produktivitas pertanian, mendukung ketahanan pangan, dan
+                memungkinkan akses lebih baik ke pasar bagi para petani dan
+                konsumen lokal.
+              </p>
+            </div>
+          </div>
+          <div class="slide">
+            <h2>Berita 2</h2>
+            <p>Ini adalah berita kedua.</p>
+          </div>
+          <div class="slide">
+            <h2>Berita 3</h2>
+            <p>Ini adalah berita ketiga.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button id="prevSlide">Sebelumnya</button>
+        <button id="nextSlide">Selanjutnya</button>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="Footer-Logo">
+          <img src="Logo transparan.png" alt="Logo SmarTani" />
+        </div>
+        <div class="footer-links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Tiktok</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // JavaScript untuk slider
+      const slider = document.querySelector(".slider");
+      const slides = document.querySelectorAll(".slide");
+      const prevSlideBtn = document.getElementById("prevSlide");
+      const nextSlideBtn = document.getElementById("nextSlide");
+      let slideIndex = 0;
+
+      // Fungsi untuk menampilkan slide berikutnya
+      function nextSlide() {
+        slideIndex = (slideIndex + 1) % slides.length;
+        updateSlider();
+      }
+
+      // Fungsi untuk menampilkan slide sebelumnya
+      function prevSlide() {
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+      }
+
+      // Fungsi untuk memperbarui tampilan slider
+      function updateSlider() {
+        slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+      }
+
+      // Tambahkan event listener untuk tombol navigasi slider
+      nextSlideBtn.addEventListener("click", nextSlide);
+      prevSlideBtn.addEventListener("click", prevSlide);
+
+      // Tampilkan slide pertama saat halaman dimuat
+      updateSlider();
+    </script>
+  </body>
+</html>
